@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const studentModel = require("./models/studentSchema");
 //const url = "mongodb://localhost:27017/greenwich"
 const url = "mongodb+srv://nguyentrung:nntrung382k2@cluster.8b5c38m.mongodb.net/greenwich"
+//Note: "greenwich" là tên của database
 mongoose.connect(url, {useNewUrlParser: true}, (err) => {
     if (err) {
         console.log(err)
@@ -36,7 +37,8 @@ app.post("/add", (req, res) => {
     name: req.body.name, 
     age: req.body.age,
     email: req.body.email,
-    image: req.body.image
+    image: req.body.image,
+    phone: req.body.phone
   })
 
   student.save((err) =>{
@@ -90,4 +92,6 @@ app.get("/student", (req, res) => {
     })
 })
 
-app.listen(port)
+app.listen(port, () => {
+  console.log("Server is running at https://localhost:3000");
+});
