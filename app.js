@@ -32,14 +32,7 @@ app.post("/add", (req, res) => {
   //console.log(req.body);
   //res.send(req.body);
   //res.render("output", { student: req.body });
-
-  var student = new studentModel({
-    name: req.body.name, 
-    age: req.body.age,
-    email: req.body.email,
-    image: req.body.image,
-    phone: req.body.phone
-  })
+  var student = new studentModel(req.body);
 
   student.save((err) =>{
     if(err){
